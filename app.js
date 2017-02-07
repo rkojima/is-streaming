@@ -1,5 +1,9 @@
 var twitchUrl = 'https://api.twitch.tv/kraken/streams/';
 
+var state = {
+    channels: [],
+};
+
 function getDataFromApi(searchTerm, callback) {
     $.ajax({
         type: 'get',
@@ -7,6 +11,7 @@ function getDataFromApi(searchTerm, callback) {
         headers: {
             'Client-ID': 'knitvus66epty3tdv3ym9grcz2iktk'
         },
+        stream_type: 'live',
         success: callback
     });
 }
@@ -27,12 +32,20 @@ function displayResults(data) {
     $('.results').html(results);
 }
 
+//REVISIONS
+//FIXED immediately start at search instead of having to click on textbox
+//save state, save what they search, show whether saved searches are live or not
+//check whether search was actually of a user or not
+//have ability to remove saved streams
+//local storage to store directly in browser
+
+
 function enterKey() {
     $('.query').keyup(function(e) {
         if(e.keyCode == 13) {
             $('.user-input').click();
         }
-    })
+    });
 }
 
 function getSearch() {
@@ -48,6 +61,7 @@ function print(test) {
 }
 
 $(document).ready(function(){
+    $('.query').focus();
     enterKey();
     getSearch();
 });
