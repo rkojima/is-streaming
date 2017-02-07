@@ -19,7 +19,7 @@ function displayResults(data) {
     var results = '';
     console.log(data);
     if (data.stream === null) {
-        results = '<p>No :(</p><br><p>Check later!</p>';
+        results = '<p>No :(</p><p>Check later!</p>';
     }
     else {
         results = '<p>Yes! :D</p><a href="' + data.stream.channel.url + '"><p>Do you want to check it out?</p></a>';
@@ -27,10 +27,27 @@ function displayResults(data) {
     $('.results').html(results);
 }
 
+function enterKey() {
+    $('.query').keyup(function(e) {
+        if(e.keyCode == 13) {
+            $('.user-input').click();
+        }
+    })
+}
+
+function getSearch() {
+    $('.user-input').submit(function(e) {
+        e.preventDefault();
+        var query = $(this).find('.query').val();
+        getDataFromApi(query, displayResults);
+    });
+}
+
 function print(test) {
     console.log(test);
 }
 
 $(document).ready(function(){
-    getDataFromApi('squillakilla', displayResults);
+    enterKey();
+    getSearch();
 });
