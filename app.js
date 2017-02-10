@@ -4,14 +4,20 @@ var state = {
     channels: [],
 };
 
-function getDataFromApi(searchTerm, callback) {
+function getDataFromApi(searchTerm, callback) { //chan1, chan2
+    if (!state.channels.includes(searchTerm)) {
+        state.channels.push(searchTerm);
+    }
     $.ajax({
         type: 'get',
-        url: 'https://api.twitch.tv/kraken/streams/' + searchTerm,
+        url: 'https://api.twitch.tv/kraken/streams/',
+        data: {
+            channel: state.channels.join(),
+        },
         headers: {
             'Client-ID': 'knitvus66epty3tdv3ym9grcz2iktk'
         },
-        stream_type: 'live',
+        stream_type: 'all',
         success: callback
     });
 }
@@ -20,16 +26,53 @@ function getDataFromApi(searchTerm, callback) {
 //if result, but isn't streaming, say channel is not streaming
 //if result, and is streaming, say channel is streaming and post link
 //if results, show each one, showing whether it's streaming or not
-function displayResults(data) {
+function displayResults(callbackResults) {
+    var onlineChannels = callbackResults.streams.map(function(stream) {
+        return stream.channel.name;
+    });
+    /*var onlineChannelLinks = callbackResults.streams.map(function(stream) {
+        return stream.channel.url;
+    });
+    */
     var results = '';
-    console.log(data);
-    if (data.stream === null) {
+    console.log(callbackResults);
+    //console.log(state.channels);
+    state.channels.forEach(function(name) {
+        if (onlineChannels.includes(name)) {
+            var channelObject = callbackResults.streams.find(function(stream){ return stream.channel.name === name; });
+            //change results here
+            results += '<a href="' + channelObject.channel.url + '" target="_blank"><p>' + name + ' is online!</p></a>';
+        }
+        else {
+            //stream is not online, change results accordingly
+            results +='<p>' + name + ' is not online.</p>';
+        }
+    });
+    $('.results').html(results);
+    /*state.channels.forEach(function(chan) {
+        callbackResults.streams.forEach(function(elem) {
+            var currChannel = elem.channel.name;
+            console.log(currChannel);
+            console.log(chan);
+            if(chan === currChannel) {
+                //add to result
+            }
+        //do something here so that it shows that there wasn't a match
+        });
+    });
+    */
+
+    //for each searchTerm, go through the callbackResults.stream and for each stream, check if channel name corresponds.
+    //if no name that matches, then person is offline. if name matches, then online. 
+
+    /*if (callbackResults.stream === null) {
         results = '<p>No :(</p><p>Check later!</p>';
     }
     else {
-        results = '<p>Yes! :D</p><a href="' + data.stream.channel.url + '"><p>Do you want to check it out?</p></a>';
+        results = '<p>Yes! :D</p><a href="' + callbackResults.stream.channel.url + '"><p>Do you want to check it out?</p></a>';
     }
     $('.results').html(results);
+    */
 }
 
 //REVISIONS
@@ -38,6 +81,7 @@ function displayResults(data) {
 //check whether search was actually of a user or not
 //have ability to remove saved streams
 //local storage to store directly in browser
+//ability to cross off streamers that you do not want to keep track of
 
 
 function enterKey() {
@@ -54,10 +98,6 @@ function getSearch() {
         var query = $(this).find('.query').val();
         getDataFromApi(query, displayResults);
     });
-}
-
-function print(test) {
-    console.log(test);
 }
 
 $(document).ready(function(){
