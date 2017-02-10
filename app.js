@@ -1,12 +1,15 @@
 var twitchUrl = 'https://api.twitch.tv/kraken/streams/';
 
+//local storage
+
 var state = {
-    channels: [],
+    channels: JSON.parse(localStorage.getItem('storedChanels')) || [],
 };
 
 function getDataFromApi(searchTerm, callback) { //chan1, chan2
     if (!state.channels.includes(searchTerm)) {
         state.channels.push(searchTerm);
+        localStorage.setItem('storedChannels', JSON.stringify(state.channels));
     }
     $.ajax({
         type: 'get',
@@ -35,17 +38,18 @@ function displayResults(callbackResults) {
     });
     */
     var results = '';
-    console.log(callbackResults);
+    //console.log(callbackResults);
     //console.log(state.channels);
     state.channels.forEach(function(name) {
         if (onlineChannels.includes(name)) {
             var channelObject = callbackResults.streams.find(function(stream){ return stream.channel.name === name; });
             //change results here
-            results += '<a href="' + channelObject.channel.url + '" target="_blank"><p>' + name + ' is online!</p></a>';
+            results += '<p class="result">' + name + ': </p>' + '<a href="' + channelObject.channel.url + '" target="_blank">' + 
+            '<button type="button" class="btn btn-success">Online!</button>' + '</a><br>';
         }
         else {
             //stream is not online, change results accordingly
-            results +='<p>' + name + ' is not online.</p>';
+            results +='<p class="result">' + name + ': </p>' + '<button type="button" class="btn btn-danger">Offline</button><br>';
         }
     });
     $('.results').html(results);
@@ -92,6 +96,10 @@ function enterKey() {
     });
 }
 
+function searchStored() {
+    //getDataFromApi(, displayResults);
+}
+
 function getSearch() {
     $('.user-input').submit(function(e) {
         e.preventDefault();
@@ -103,5 +111,6 @@ function getSearch() {
 $(document).ready(function(){
     $('.query').focus();
     enterKey();
+    searchStored();
     getSearch();
 });

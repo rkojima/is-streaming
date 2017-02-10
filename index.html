@@ -2,22 +2,23 @@
 <html>
 <head>
     <title>Is it Streaming?</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Is this Twitch channel streaming right now?">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 </head>
 <body>
     <h1>Is this channel streaming right now?</h1>
     <form class="user-input">
-        <input type="text" name="input" class = 'query' placeholder="Name of channel">
+        <input type="text" name="input" class='query' placeholder="Name of channel" required>
         <button>Search</button>
     </form>
-    <div class="results hidden">
+    <div class="results">
     </div>
 
-    <div class="test">
-        
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="app.js"></script>
