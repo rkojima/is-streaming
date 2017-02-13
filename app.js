@@ -3,14 +3,17 @@ var twitchUrl = 'https://api.twitch.tv/kraken/streams/';
 //local storage
 
 var state = {
-    channels: JSON.parse(localStorage.getItem('storedChanels')) || [],
+    channels: JSON.parse(localStorage.getItem('storedChannels')) || [],
 };
 
-function getDataFromApi(searchTerm, callback) { //chan1, chan2
+function storeNewData(searchTerm) {
     if (!state.channels.includes(searchTerm)) {
         state.channels.push(searchTerm);
         localStorage.setItem('storedChannels', JSON.stringify(state.channels));
     }
+}
+
+function getDataFromApi(callback) { //chan1, chan2
     $.ajax({
         type: 'get',
         url: 'https://api.twitch.tv/kraken/streams/',
@@ -97,20 +100,21 @@ function enterKey() {
 }
 
 function searchStored() {
-    //getDataFromApi(, displayResults);
+    getDataFromApi(displayResults);
 }
 
 function getSearch() {
     $('.user-input').submit(function(e) {
         e.preventDefault();
         var query = $(this).find('.query').val();
-        getDataFromApi(query, displayResults);
+        storeNewData(query);
+        getDataFromApi(displayResults);
     });
 }
 
 $(document).ready(function(){
+    searchStored();
     $('.query').focus();
     enterKey();
-    searchStored();
     getSearch();
 });
