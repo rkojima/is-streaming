@@ -90,11 +90,11 @@ function displayResults(callbackResults) {
 }
 
 function removeChannel() {
-    $('.close-button').click(function(e) {
-        console.log(test);
-        var toRemove = state.indexOf(clicked);
+    $('table').on('click', '.close-button', function(e) {
+        var name = $(this).closest('td').siblings('.result').text();
+        var toRemove = state.channels.indexOf(name);
         if (toRemove > -1) {
-            state.splice(toRemove, 1);
+            state.channels.splice(toRemove, 1);
             localStorage.setItem('storedChannels', JSON.stringify(state.channels));
             getDataFromApi(displayResults);
         }
