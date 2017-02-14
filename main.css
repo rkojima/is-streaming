@@ -2,13 +2,37 @@
     font-family: "Roboto", sans-serif;
 }
 */
-body {
-    font-family: "Roboto";
-    padding-left: 20px;
+
+input {
+    border: 1px solid #6441A4;
 }
 
+.btn {
+    background-color: #6441A4;
+    color: white;
+}
+
+.input-group .form-control {
+    margin: 0px !important;
+}
+
+button {
+    font-size: 12px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+table {
+    border-radius: 3px;
+}
 
 .result {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Searching for channel */
@@ -17,9 +41,16 @@ body {
 }
 
 a {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    height: 30px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-button a{
+    height: 30px; 
+    width: 30px;
 }
 
 .offline a:link, .offline a:visited {
@@ -43,6 +74,15 @@ a {
     background-color: #449d44;
 }
 
+.close-button a:link, .close-button a:visited {
+    text-decoration: none;
+    color: white;
+    background-color: #DEDFE1;
+}
+
+.close-button a:hover, .close-button a:active {
+    background-color: #808080;
+}
 
 .online, .offline {
     text-align: center;
