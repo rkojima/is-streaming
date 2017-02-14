@@ -49,7 +49,7 @@ function displayResults(callbackResults) {
             //change results here
             results += '<tr><td class="result">' + name + '</td><td class="online">' + 
             '<a href="' + channelObject.channel.url + '" target="_blank">' + 
-            '<button type="button" class="btn btn-success">Online!</button></a></td></tr>';
+            'Online!</a></td>';
 
             /*'<p class="result">' + name + ': </p>' + '<a href="' + channelObject.channel.url + '" target="_blank">' + 
             '<button type="button" class="btn btn-success">Online!</button>' + '</a><br>';
@@ -57,9 +57,10 @@ function displayResults(callbackResults) {
         }
         else {
             //stream is not online, change results accordingly
-            results +='<tr><td class="result">' + name + '</td> <td class="link"><button type="button" class="btn btn-danger">Offline</button></td></tr>';
+            results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>';
             //'<p class="result">' + name + ': </p>' + '<button type="button" class="btn btn-danger">Offline</button><br>';
         }
+        results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
     $('.results').html(results);
     /*state.channels.forEach(function(chan) {
@@ -88,13 +89,25 @@ function displayResults(callbackResults) {
     */
 }
 
+function removeChannel() {
+    $('.close-button').click(function(e) {
+        console.log(test);
+        var toRemove = state.indexOf(clicked);
+        if (toRemove > -1) {
+            state.splice(toRemove, 1);
+            localStorage.setItem('storedChannels', JSON.stringify(state.channels));
+            getDataFromApi(displayResults);
+        }
+    });
+}
+
+
 //REVISIONS
 //FIXED immediately start at search instead of having to click on textbox
-//save state, save what they search, show whether saved searches are live or not
+//FIXED save state, save what they search, show whether saved searches are live or not
 //check whether search was actually of a user or not
 //have ability to remove saved streams
-//local storage to store directly in browser
-//ability to remove streamers that you do not want to keep track of
+//FIXED local storage to store directly in browser
 
 
 function enterKey() {
@@ -123,4 +136,5 @@ $(document).ready(function(){
     $('.query').focus();
     enterKey();
     getSearch();
+    removeChannel();
 });

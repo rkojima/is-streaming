@@ -4,25 +4,70 @@
 */
 body {
     font-family: "Roboto";
+    padding-left: 20px;
 }
 
 
 .result {
-    display: inline-block;
-    margin: 5px;
 }
 
+/* Searching for channel */
 .user-input {
     margin-bottom: 10px;
 }
 
-.link {
-
+a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
 }
 
-.online, a:link, a:visited {
-    background-color: #5CB85C;
+.offline a:link, .offline a:visited {
+    text-decoration: none;
     color: white;
+    background-color: #D9534F;
+}
+
+.offline a:hover, .offline a:active {
+    cursor: not-allowed;
+    background-color: #c9302c;
+}
+
+.online a:link, .online a:visited{
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+}
+
+.online a:hover, .online a:active {
+    background-color: #449d44;
+}
+
+
+.online, .offline {
+    text-align: center;
+}
+
+td {
+    text-align: left;
+}
+
+table, td {
+    border: 1px solid black;
+}
+
+.close-button {
+    text-align: center;
+    width: 21px;
+}
+
+/*td a {
+    padding: 1em;
+    margin: -1em;
+}*/
+
+table {
+    border-collapse: collapse;
 }
 
 
