@@ -7,8 +7,8 @@ var state = {
 };
 
 function storeNewData(searchTerm) {
-    if (!state.channels.includes(searchTerm)) {
-        state.channels.push(searchTerm);
+    if (!state.channels.includes(searchTerm.toLowerCase())) {
+        state.channels.push(searchTerm.toLowerCase());
         localStorage.setItem('storedChannels', JSON.stringify(state.channels));
     }
 }
@@ -45,14 +45,20 @@ function displayResults(callbackResults) {
     //console.log(state.channels);
     state.channels.forEach(function(name) {
         if (onlineChannels.includes(name)) {
-            var channelObject = callbackResults.streams.find(function(stream){ return stream.channel.name === name; });
+            var channelObject = callbackResults.streams.find(function(stream){ return stream.channel.name.toLowerCase() === name; });
             //change results here
-            results += '<p class="result">' + name + ': </p>' + '<a href="' + channelObject.channel.url + '" target="_blank">' + 
+            results += '<tr><td class="result">' + name + '</td><td class="online">' + 
+            '<a href="' + channelObject.channel.url + '" target="_blank">' + 
+            '<button type="button" class="btn btn-success">Online!</button></a></td></tr>';
+
+            /*'<p class="result">' + name + ': </p>' + '<a href="' + channelObject.channel.url + '" target="_blank">' + 
             '<button type="button" class="btn btn-success">Online!</button>' + '</a><br>';
+            */
         }
         else {
             //stream is not online, change results accordingly
-            results +='<p class="result">' + name + ': </p>' + '<button type="button" class="btn btn-danger">Offline</button><br>';
+            results +='<tr><td class="result">' + name + '</td> <td class="link"><button type="button" class="btn btn-danger">Offline</button></td></tr>';
+            //'<p class="result">' + name + ': </p>' + '<button type="button" class="btn btn-danger">Offline</button><br>';
         }
     });
     $('.results').html(results);
@@ -88,7 +94,7 @@ function displayResults(callbackResults) {
 //check whether search was actually of a user or not
 //have ability to remove saved streams
 //local storage to store directly in browser
-//ability to cross off streamers that you do not want to keep track of
+//ability to remove streamers that you do not want to keep track of
 
 
 function enterKey() {
