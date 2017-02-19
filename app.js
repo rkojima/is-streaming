@@ -36,13 +36,7 @@ function displayResults(callbackResults) {
     var onlineChannels = callbackResults.streams.map(function(stream) {
         return stream.channel.name;
     });
-    /*var onlineChannelLinks = callbackResults.streams.map(function(stream) {
-        return stream.channel.url;
-    });
-    */
     var results = '';
-    //console.log(callbackResults);
-    //console.log(state.channels);
     state.channels.forEach(function(name) {
         if (onlineChannels.includes(name)) {
             var channelObject = callbackResults.streams.find(function(stream){ return stream.channel.name.toLowerCase() === name; });
@@ -50,43 +44,18 @@ function displayResults(callbackResults) {
             results += '<tr><td class="result">' + name + '</td><td class="online">' + 
             '<a href="' + channelObject.channel.url + '" target="_blank">' + 
             'Online!</a></td>';
-
-            /*'<p class="result">' + name + ': </p>' + '<a href="' + channelObject.channel.url + '" target="_blank">' + 
-            '<button type="button" class="btn btn-success">Online!</button>' + '</a><br>';
-            */
         }
         else {
             //stream is not online, change results accordingly
             results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>';
-            //'<p class="result">' + name + ': </p>' + '<button type="button" class="btn btn-danger">Offline</button><br>';
         }
         results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
     $('.results').html(results);
-    /*state.channels.forEach(function(chan) {
-        callbackResults.streams.forEach(function(elem) {
-            var currChannel = elem.channel.name;
-            console.log(currChannel);
-            console.log(chan);
-            if(chan === currChannel) {
-                //add to result
-            }
-        //do something here so that it shows that there wasn't a match
-        });
-    });
-    */
+    
 
     //for each searchTerm, go through the callbackResults.stream and for each stream, check if channel name corresponds.
     //if no name that matches, then person is offline. if name matches, then online. 
-
-    /*if (callbackResults.stream === null) {
-        results = '<p>No :(</p><p>Check later!</p>';
-    }
-    else {
-        results = '<p>Yes! :D</p><a href="' + callbackResults.stream.channel.url + '"><p>Do you want to check it out?</p></a>';
-    }
-    $('.results').html(results);
-    */
 }
 
 function removeChannel() {
