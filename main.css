@@ -12,10 +12,6 @@ input {
     color: white;
 }
 
-.input-group .form-control {
-    margin: 0px !important;
-}
-
 button {
     font-size: 12px;
 }
@@ -106,5 +102,18 @@ table {
     border-collapse: collapse;
 }
 
+@media (min-width:240px) and (max-width:767px) {
+    .user-input .form-control {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+    }
+    .user-input .form-group {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+}
 
 /*Do mobile first*/
