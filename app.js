@@ -51,7 +51,7 @@ function displayResults(callbackResults) {
         }
         results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
-    $('.results').html(results);
+    $('table.results').html(results);
     
 
     //for each searchTerm, go through the callbackResults.stream and for each stream, check if channel name corresponds.
