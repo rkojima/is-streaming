@@ -3,7 +3,7 @@ var twitchUrl = 'https://api.twitch.tv/kraken/streams/';
 //local storage
 
 var state = {
-    channels: JSON.parse(localStorage.getItem('storedChannels')) || [],
+    channels:  JSON.parse(localStorage.getItem('storedChannels')) || [],
 };
 
 function storeNewData(searchTerm) {

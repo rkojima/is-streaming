@@ -97,6 +97,10 @@ table {
     border-collapse: collapse;
 }
 
+td.loading {
+    padding: 5px;
+}
+
 @media (min-width:240px) and (max-width:767px) {
     .user-input .form-control {
         display: inline-block;
