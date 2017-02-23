@@ -8,30 +8,35 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
-
+    <link rel="stylesheet" type="text/css" href="float-grid.css">
 </head>
 <body>
     <header class="hero-section">
         <div class="hero-text">
-            <h1>Is this Twitch channel streaming right now?</h1>
-            <h4>Type in a Twitch channel name to see if they're streaming right now. <br> 
-            Click on the "Online!" button right next to the channel name to go to the stream</h4>
+            <h1>Twitch Channel Stream Check</h1>
         </div>
     </header>
-
-    <form class="form-inline user-input">
-      <div class="form-group">
-        <input type="text" name="query" class='form-control query' placeholder="Name of channel" required>
-      </div>
-      <button class="btn btn-sm" type="submit">Search</button>
-      <span id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</span>
-    </form>
-
-    <table class="results">
-        <tr>
-            <td class="loading">loading...</td>
-        </tr>
-    </table>
+    <section class="col-6">
+            <h4>Type in a Twitch channel name to see if they're streaming right now. <br> 
+            Click on the "Online!" button right next to the channel name to go to the stream</h4>
+    </section>
+    <section class="search-and-results col-6">
+        <form class="form-inline user-input">
+          <div class="form-group">
+            <input type="text" name="query" class='form-control query' placeholder="Name of channel" required>
+          </div>
+          <button class="btn btn-sm" type="submit">Search</button>
+          <span id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</span>
+        </form>
+        <div class="personal">
+            <p>Saved Searches</p>
+            <table class="results">
+                <tr>
+                    <td class="loading">loading...</td>
+                </tr>
+            </table>
+        </div>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="app.js"></script>
