@@ -1,0 +1,13 @@
+.search-and-results {
+    display: flex;
+    flex-direction: column;
+}
+
+.help-text {
+    display: flex;
+}
+
+.text-form-result {
+    display: flex;
+    flex-direction: column;
+}

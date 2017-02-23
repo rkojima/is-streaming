@@ -28,6 +28,19 @@ function getDataFromApi(callback) { //chan1, chan2
     });
 }
 
+function getFeaturedTwitchStreams(callback) {
+    // body...
+    $.ajax({
+        type: 'get',
+        url: 'https://api.twitch.tv/kraken/streams/featured',
+        limit: 5,
+        headers: {
+            'Client-ID': 'knitvus66epty3tdv3ym9grcz2iktk'
+        },
+        success: callback
+    });
+}
+
 //if no results, display no results
 //if result, but isn't streaming, say channel is not streaming
 //if result, and is streaming, say channel is streaming and post link
@@ -52,11 +65,11 @@ function displayResults(callbackResults) {
         results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
     $('table.results').html(results);
-    
-
     //for each searchTerm, go through the callbackResults.stream and for each stream, check if channel name corresponds.
     //if no name that matches, then person is offline. if name matches, then online. 
 }
+
+
 
 function removeChannel() {
     $('table').on('click', '.close-button', function(e) {

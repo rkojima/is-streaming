@@ -16,28 +16,32 @@
             <h1>Twitch Channel Stream Check</h1>
         </div>
     </header>
-    <section class="col-6">
+    <div class="text-form-result">
+        <section class="help-text">
             <h4>Type in a Twitch channel name to see if they're streaming right now. <br> 
             Click on the "Online!" button right next to the channel name to go to the stream</h4>
-    </section>
-    <section class="search-and-results col-6">
-        <form class="form-inline user-input">
-          <div class="form-group">
-            <input type="text" name="query" class='form-control query' placeholder="Name of channel" required>
-          </div>
-          <button class="btn btn-sm" type="submit">Search</button>
-          <span id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</span>
-        </form>
-        <div class="personal">
-            <p>Saved Searches</p>
-            <table class="results">
-                <tr>
-                    <td class="loading">loading...</td>
-                </tr>
-            </table>
-        </div>
-    </section>
-
+        </section>
+        <section class="search-and-results col-6">
+            <form class="form-inline user-input">
+              <div class="form-group">
+                <input type="text" name="query" class='form-control query' placeholder="Name of channel" required>
+              </div>
+              <button class="btn btn-sm" type="submit">Search</button>
+              <span id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</span>
+            </form>
+            <div class="personal-results">
+                <p>Saved Searches</p>
+                <table class="results">
+                    <tr>
+                        <td class="loading">loading...</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popular-results">
+                <p>Here's some popular streamers!</p>
+            </div>
+        </section>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="app.js"></script>
 </body>
