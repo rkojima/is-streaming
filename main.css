@@ -11,14 +11,15 @@ button {
     font-size: 12px;
 }
 
-.help-text {
-    padding: 10px;
+.help-text-1 {
+    padding: 10px 10px 0px 10px;
 }
 
 body {
     font-family: "Roboto", sans-serif;
     position: relative;
     background-color: #dcd8e8;
+    text-align: center;
 }
 
 .hero-section {
@@ -37,6 +38,10 @@ body {
     text-align: center;
     font-size: 70px;
     font-weight: 700px;
+}
+
+h3 {
+    margin-top: 0px;
 }
 
 .search-and-results {
@@ -109,6 +114,7 @@ td {
 
 table, td {
     border: 1px solid black;
+    padding: 3px;
 }
 
 .close-button {

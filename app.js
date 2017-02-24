@@ -50,6 +50,7 @@ function getFeaturedTwitchStreams(callback) {
 function displayResults(callbackResults) {
     var onlineChannels = callbackResults.streams.map(function(stream) {
         return stream.channel.name;
+        //to get a list of which searched channels are currently online
     });
     var results = '';
     state.channels.forEach(function(name) {
@@ -62,7 +63,7 @@ function displayResults(callbackResults) {
         }
         else {
             //stream is not online, change results accordingly
-            results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>' + '<td class="game">Not Playing</td>';
+            results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>' + '<td class="game">nothing...</td>';
         }
         results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
@@ -123,6 +124,7 @@ function getSearch() {
         var query = $(this).find('.query').val();
         storeNewData(query);
         getDataFromApi(displayResults);
+        $('input').val("");
     });
 }
 
