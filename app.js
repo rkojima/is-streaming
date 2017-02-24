@@ -33,9 +33,11 @@ function getFeaturedTwitchStreams(callback) {
     $.ajax({
         type: 'get',
         url: 'https://api.twitch.tv/kraken/streams/featured',
-        limit: 5,
         headers: {
             'Client-ID': 'knitvus66epty3tdv3ym9grcz2iktk'
+        },
+        data: {
+            limit: 5,
         },
         success: callback
     });
@@ -56,11 +58,11 @@ function displayResults(callbackResults) {
             //change results here
             results += '<tr><td class="result">' + name + '</td><td class="online">' + 
             '<a href="' + channelObject.channel.url + '" target="_blank">' + 
-            'Online!</a></td>';
+            'Online!</a></td>' + '<td class="game">' + channelObject.channel.game + '</td>';
         }
         else {
             //stream is not online, change results accordingly
-            results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>';
+            results += '<tr><td class="result">' + name + '</td> <td class="offline"><a class="disabled" href="javascript:;">Offline</a></td>' + '<td class="game">Not Playing</td>';
         }
         results += '<td class="close-button"><a href="#">&#10006</a></td></tr>';
     });
@@ -69,7 +71,18 @@ function displayResults(callbackResults) {
     //if no name that matches, then person is offline. if name matches, then online. 
 }
 
-
+function displayFeaturedResults(callbackResults) {
+    var featuredResults = '';
+    console.log(callbackResults); 
+    callbackResults.featured.forEach(function(feature) {
+        //console.log(feature.stream); different from personal searches because personal searches are not featured. 
+        var channel = feature.stream.channel;
+        featuredResults += '<tr><td class="result">' + channel.name + '</td><td class="online">' + 
+            '<a href="' + channel.url + '" target="_blank">' + 
+            'Online!</a></td>' + '<td class="game">' + channel.game + '</td><td class="close-button"><a href="#">&#10006</a></td></tr>';
+    });
+    $('table.pop-list').html(featuredResults);
+}
 
 function removeChannel() {
     $('table').on('click', '.close-button', function(e) {
@@ -113,8 +126,10 @@ function getSearch() {
     });
 }
 
+
 $(document).ready(function(){
     searchStored();
+    getFeaturedTwitchStreams(displayFeaturedResults);
     $('.query').focus();
     enterKey();
     getSearch();

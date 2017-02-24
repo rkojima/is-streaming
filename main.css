@@ -40,9 +40,7 @@ body {
 }
 
 .search-and-results {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding: 10px;
 }
 
 .result {
@@ -57,9 +55,8 @@ body {
 }
 
 a {
-    display: flex;
-    height: 30px;
-    width: 50px;
+    margin: -10em;
+    padding: 10em;
     justify-content: center;
     align-items: center;
 }
@@ -102,10 +99,12 @@ a {
 
 .online, .offline {
     text-align: center;
+    padding: 3px;
 }
 
 td {
     text-align: left;
+    overflow: hidden;
 }
 
 table, td {
