@@ -1,10 +1,25 @@
-input {
-    border: 1px solid #6441A4;
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
-.btn {
+input {
+    border: 1px solid #6441A4;
+    width: 200px;
+    border-radius: 3px 0 0 3px;
+    padding: 5px 0;
+}
+
+
+input, input::-webkit-input-placeholder {
+    font-size: 15px;
+}
+
+
+button {
     background-color: #6441A4;
     color: white;
+    border-radius: 0px 3px 3px 0px;
+    border: none;
 }
 
 button {
@@ -20,24 +35,28 @@ body {
     position: relative;
     background-color: #dcd8e8;
     text-align: center;
-}
-
-.hero-section {
     background-image: url("hero-picture.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
+.hero-section {
+/*    background-image: url("hero-picture.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+*/}
+
 .hero-text {
-    padding-top: 200px;
+/*    padding-top: 200px;
     padding-bottom: 200px;
-}
+*/}
 
 .hero-text h1 {
+    color: mediumpurple;
     text-align: center;
-    font-size: 70px;
-    font-weight: 700px;
+    font-size: 50px;
 }
 
 h3 {
@@ -48,10 +67,10 @@ h3 {
     padding: 10px;
 }
 
-.result {
+td.result {
     padding-left: 5px;
     padding-right: 5px;
-    background-color: white;
+    background-color: mediumpurple;
 }
 
 /* Searching for channel */
@@ -108,13 +127,13 @@ a {
 }
 
 td {
+    border: 1px solid black;
     text-align: left;
     overflow: hidden;
 }
 
 table, td {
-    border: 1px solid black;
-    padding: 3px;
+    padding: 5px;
 }
 
 .close-button {
@@ -135,18 +154,32 @@ td.loading {
     padding: 5px;
 }
 
+td.game {
+    background-color: lightblue;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div.form-group {
+    display: flex;
+    margin: auto;
+}
+
 @media (min-width:240px) and (max-width:767px) {
     .user-input .form-control {
         display: inline-block;
-        width: auto;
         margin: 0;
     }
     .user-input .form-group {
-        display: inline-block;
         width: auto;
         margin-bottom: 0;
         vertical-align: middle;
     }
 }
+
+@media (max-width: )
 
 /*Do mobile first*/

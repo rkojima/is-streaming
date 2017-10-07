@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Is this Twitch channel streaming right now?">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ -->    <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="float-grid.css">
 </head>
 <body>
     <header class="hero-section">
         <div class="hero-text">
-            <h1>Twitch Channel Stream Check</h1>
+            <h1>Twitch Channel</h1>
+            <h1>Stream Check</h1>
         </div>
     </header>
     <div class="text-form-result">
@@ -24,9 +25,9 @@
             <form class="form-inline user-input">
               <div class="form-group">
                 <input type="text" name="query" class='form-control query' placeholder="Name of channel" required>
+                <button type="submit">Search</button>
               </div>
-              <button class="btn btn-sm" type="submit">Search</button>
-              <span id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</span>
+              <p id="helpBlock" class="help-block">e.g. 'capcomfighters', 'monstercat', etc.</p>
             </form>
             <div class="personal-results">
                 <h3> Click on the "Online!" button right next to the channel name to go to the stream</h3>
