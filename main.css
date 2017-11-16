@@ -6,12 +6,13 @@ input {
     border: 1px solid #6441A4;
     width: 200px;
     border-radius: 3px 0 0 3px;
-    padding: 5px 0;
+    padding: 10px;
+
 }
 
 
 input, input::-webkit-input-placeholder {
-    font-size: 15px;
+    font-size: 1.1em;
 }
 
 
@@ -20,10 +21,7 @@ button {
     color: white;
     border-radius: 0px 3px 3px 0px;
     border: none;
-}
-
-button {
-    font-size: 12px;
+    font-size: 1.1em;
 }
 
 .help-text-1 {
@@ -54,7 +52,7 @@ body {
 */}
 
 .hero-text h1 {
-    color: mediumpurple;
+    color: #C6A3FF;
     text-align: center;
     font-size: 50px;
 }
@@ -70,7 +68,7 @@ h3 {
 td.result {
     padding-left: 5px;
     padding-right: 5px;
-    background-color: mediumpurple;
+    background-color: #C6A3FF;
 }
 
 /* Searching for channel */
@@ -93,22 +91,21 @@ a {
 .offline a:link, .offline a:visited {
     text-decoration: none;
     color: white;
-    background-color: #D9534F;
+    background-color: #DB7082;
 }
 
 .offline a:hover, .offline a:active {
     cursor: not-allowed;
-    background-color: #c9302c;
 }
 
 .online a:link, .online a:visited{
     text-decoration: none;
     color: white;
-    background-color: #4CAF50;
+    background-color: #16B188;
 }
 
 .online a:hover, .online a:active {
-    background-color: #449d44;
+    background-color: #00986F;
 }
 
 .close-button a:link, .close-button a:visited {
